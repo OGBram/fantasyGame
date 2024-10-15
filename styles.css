@@ -7,13 +7,13 @@ body {
     align-items: center;
     height: 100vh;
     background-image: url("IMG/BACKGROUND/bg2560.png");
-    background-size: 100%;
-
-
+    background-size: 125%;
 }
 
 canvas {
-    border: 1px solid black;
-    width: 100%;
-    height: 100%;
+    border: 100px solid black;
+    border-right: 25px solid black;
+    width: 800px;
+    height: 600px;
+    transform: translateX(-44%);
 }
