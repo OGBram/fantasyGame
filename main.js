@@ -7,17 +7,33 @@ ctx.fillStyle = "white";
 ctx.font = "100px monospace";
 const tileWidth = 32;
 const tileHeight = 32;
-
+class Player {
+    constructor(){
+        this.width = 50;
+        this.height = 50;
+        this.color = "blue";
+        this.x = 50;
+        this.y = 450;
+    }
+    draw(ctx) {
+        ctx.save();
+        ctx.fillStyle = this.color;
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+        ctx.restore();
+    }
+}
 class Game {
     constructor(canvas, ctx, tileHeight, tileWidth) {
         this.canvas = canvas;
         this.ctx = ctx;
+        this.player = new Player();
     }
     drawColor(r,g,b){
-        ctx.save;
+
         ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
-        ctx.restore;
+
     }
+
 }
 
 const game = new Game(canvas, ctx, tileWidth, tileHeight);
@@ -38,15 +54,16 @@ var lastTime;
 
         if (elapsed > requiredElapsed) {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            game.drawColor(500,500,0);
+            game.drawColor(50,50,50);
+            game.player.draw(ctx);
             ctx.fillText("Hello World", x, y);
             x += 0;
-            y += 1;
+            y += .25;
             if (x > 300 || y > 600) {
                 x = 25 + Math.random()*100;
                 y = 0;
             };
-            
+
             lastTime = now;
         }
     }
