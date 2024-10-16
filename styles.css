@@ -8,6 +8,7 @@ body {
     height: 100vh;
     background-image: url("IMG/BACKGROUND/bg2560.png");
     background-size: 125%;
+    overflow: hidden;
 }
 
 canvas {
