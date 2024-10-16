@@ -1,59 +1,24 @@
+// main.js
+import { Game } from './game.js';
+
 console.log("hello world");
+
 const canvas = document.getElementById("canvasMain");
 const ctx = canvas.getContext("2d");
 canvas.height = 600;
 canvas.width = 800;
+
 ctx.fillStyle = "white";
 ctx.font = "100px monospace";
+
 const tileWidth = 32;
 const tileHeight = 32;
 
-class Player {
-    constructor(){
-        this.width = 50;
-        this.height = 50;
-        this.color = "blue";
-        this.x = 50;
-        this.y = 450;
-        this.speed = 5;  // Speed of movement
-        this.dx = 0;     // Horizontal movement
-        this.dy = 0;     // Vertical movement
-    }
-    
-    draw(ctx) {
-        ctx.save();
-        ctx.fillStyle = this.color;
-        ctx.fillRect(this.x, this.y, this.width, this.height);
-        ctx.restore();
-    }
+const game = new Game(canvas, ctx, tileWidth, tileHeight);  // Pass the canvas here
 
-    update() {
-        this.x += this.dx;
-        this.y += this.dy;
-        
-        // Ensure the player does not move outside the canvas
-        this.x = Math.max(0, Math.min(canvas.width - this.width, this.x));
-        this.y = Math.max(0, Math.min(canvas.height - this.height, this.y));
-    }
-}
-
-class Game {
-    constructor(canvas, ctx, tileHeight, tileWidth) {
-        this.canvas = canvas;
-        this.ctx = ctx;
-        this.player = new Player();
-    }
-
-    drawColor(r, g, b) {
-        ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
-    }
-}
-
-const game = new Game(canvas, ctx, tileWidth, tileHeight);
 let x = 50;
 let y = 50;
 
-// Key handling
 const keys = {
     ArrowUp: false,
     ArrowDown: false,
@@ -95,9 +60,9 @@ function loop(now) {
     if (elapsed > requiredElapsed) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         game.drawColor(50, 500, 50);
-        game.player.update();
-        game.player.draw(ctx);
-        ctx.fillText("Hello World", x, y);
+        game.player.update();  // Update the player's position
+        game.player.draw(ctx); // Draw the player
+        ctx.fillText("Hello World!", x, y);
         x += 0;
         y += .25;
 
