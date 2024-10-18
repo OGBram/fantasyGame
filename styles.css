@@ -5,16 +5,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+
+    width: 800px;
+    height: 600px;
     background-image: url("IMG/BACKGROUND/bg2560.png");
-    background-size: 125%;
+    background-size: 100%;
     overflow: hidden;
 }
 
 canvas {
-    border: 100px solid black;
-    border-right: 25px solid black;
     width: 800px;
     height: 600px;
-    transform: translateX(-35%);
 }

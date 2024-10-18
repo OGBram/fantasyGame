@@ -1,12 +1,14 @@
 // player.js
 export class Player {
-    constructor(canvas) {
+    constructor(canvas, tileHeight, tileWidth) {
         this.canvas = canvas;  // Store the canvas reference
-        this.width = 50;
-        this.height = 50;
-        this.color = "blue";
+        this.tileWidth = tileWidth;
+        this.tileHeight = tileHeight;
+        this.width = tileWidth;
+        this.height = tileHeight;
+        this.color = "yellow";
         this.x = 50;
-        this.y = 450;
+        this.y = 50;
         this.speed = 5;
         this.dx = 0;
         this.dy = 0;
@@ -20,6 +22,13 @@ export class Player {
     }
 
     update() {
+        //flashing player colors
+        if(this.color === "yellow"){
+                this.color = "red";
+            }else if(this.color === "red"){
+                this.color = "yellow";
+            }
+
         this.x += this.dx;
         this.y += this.dy;
 

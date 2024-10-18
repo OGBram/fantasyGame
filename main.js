@@ -14,13 +14,11 @@ const tileHeight = 32;
 // game.js
 const game = new Game(canvas, ctx, tileWidth, tileHeight);  
 
-// inputHandler.js
+// uses: inputHandler.js
 setupInputListeners(game);
 
-let x = 50;
-let y = 50;
+// Game Loop uses: player.js, game.js
 
-// Game Loop player.js game.js
 var lastTime;
 var requiredElapsed = 1000 / 50;
 
@@ -34,17 +32,9 @@ function loop(now) {
 
     if (elapsed > requiredElapsed) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        game.drawColor(50, 500, 50);
+
         game.player.update(); 
         game.player.draw(ctx); 
-        ctx.fillText("Hello World!", x, y);
-        x += 0;
-        y += .25;
-
-        if (x > 300 || y > 600) {
-            x = 25 + Math.random() * 100;
-            y = 0;
-        }
 
         lastTime = now;
     }

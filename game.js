@@ -5,7 +5,10 @@ export class Game {
     constructor(canvas, ctx, tileHeight, tileWidth) {
         this.canvas = canvas;
         this.ctx = ctx;
-        this.player = new Player(canvas);
+        this.player = new Player(canvas, tileHeight, tileWidth);
+        this.tileHeight = tileHeight;
+        this.tileWidth = tileWidth;
+        
     }
 
     drawColor(r, g, b) {
