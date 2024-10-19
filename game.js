@@ -7,8 +7,7 @@ export class Game {
         this.ctx = ctx;
         this.player = new Player(canvas, tileHeight, tileWidth);
         this.tileHeight = tileHeight;
-        this.tileWidth = tileWidth;
-        
+        this.tileWidth = tileWidth     
     }
 
     drawColor(r, g, b) {
