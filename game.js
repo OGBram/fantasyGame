@@ -2,12 +2,13 @@
 import { Player } from './player.js';
 
 export class Game {
-    constructor(canvas, ctx, tileHeight, tileWidth) {
+    constructor(canvas, ctx, tileHeight, tileWidth, audio2) {
         this.canvas = canvas;
         this.ctx = ctx;
+        this.audio2 = audio2;
         this.player = new Player(canvas, tileHeight, tileWidth);
         this.tileHeight = tileHeight;
-        this.tileWidth = tileWidth     
+        this.tileWidth = tileWidth;     
     }
 
     drawColor(r, g, b) {

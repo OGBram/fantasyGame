@@ -10,6 +10,9 @@ ctx.fillStyle = "white";
 ctx.font = "100px monospace";
 const tileWidth = 32;
 const tileHeight = 32;
+const audio1 = document.getElementById("mainSound");
+audio1.play();
+audio1.repeat = true;
 
 // game.js
 const game = new Game(canvas, ctx, tileWidth, tileHeight);  

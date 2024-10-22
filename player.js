@@ -1,9 +1,10 @@
 // player.js
 export class Player {
-    constructor(canvas, tileHeight, tileWidth) {
+    constructor(canvas, tileHeight, tileWidth, audio2) {
         this.canvas = canvas;
         this.tileWidth = tileWidth;
         this.tileHeight = tileHeight;
+        this.audio2 = audio2;
         this.width = tileWidth;
         this.height = tileHeight;
         this.spriteWidth = 48;
@@ -18,6 +19,8 @@ export class Player {
         this.maxFrame = 93;
         this.spriteTimer = 0;
         this.image = document.getElementById("earthImage");
+        this.audio2 = document.getElementById("playerMove");
+
     }
 
     draw(context){
@@ -45,6 +48,10 @@ export class Player {
         
         this.x += this.dx;
         this.y += this.dy;
+        if(this.dx || this.dy > 0){
+            this.audio2.play();
+        }
+
 
         // Ensure the player does not move outside the canvas using this.canvas
         this.x = Math.max(0, Math.min(this.canvas.width - this.width, this.x));
