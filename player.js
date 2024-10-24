@@ -58,4 +58,4 @@ export class Player {
         this.y = Math.max(0, Math.min(this.canvas.height - this.height, this.y));
     
     }
-};
+}

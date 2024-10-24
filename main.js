@@ -22,8 +22,8 @@ setupInputListeners(game);
 
 // Game Loop uses: player.js, game.js
 
-var lastTime;
-var requiredElapsed = 1000 / 50;
+let lastTime;
+const requiredElapsed = 1000 / 50;
 
 requestAnimationFrame(loop);
 
@@ -31,7 +31,7 @@ function loop(now) {
     requestAnimationFrame(loop);
 
     if (!lastTime) { lastTime = now; }
-    var elapsed = now - lastTime;
+    const elapsed = now - lastTime;
 
     if (elapsed > requiredElapsed) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
