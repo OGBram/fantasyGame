@@ -5,10 +5,10 @@ export class Player {
         this.tileWidth = tileWidth;
         this.tileHeight = tileHeight;
         this.audio2 = audio2;
-        this.width = tileWidth;
-        this.height = tileHeight;
-        this.spriteWidth = 48;
-        this.spriteHeight = 48;
+        this.width = 512;
+        this.height = 320;
+        this.spriteWidth = 320;
+        this.spriteHeight = 512;
         this.x = 50;
         this.y = 50;
         this.speed = 5;
@@ -16,9 +16,9 @@ export class Player {
         this.dy = 0;
         this.frameX = 0;
         this.frameY = 0;
-        this.maxFrame = 93;
+        this.maxFrame = 11;
         this.spriteTimer = 0;
-        this.image = document.getElementById("earthImage");
+        this.image = document.getElementById("rightBear");
         this.audio2 = document.getElementById("playerMove");
 
     }
@@ -34,13 +34,13 @@ export class Player {
             this.spriteHeight,
             this.x,
             this.y,
-            this.width*3,
-            this.height*3,
+            this.width/2,
+            this.height/2,
         );
     }
     update(){
         this.spriteTimer++;
-        if(this.spriteTimer === 4){
+        if(this.spriteTimer === 2){
             this.frameX < this.maxFrame ? this.frameX++ : this.frameX = 0;
             this.spriteTimer = 0;
         } 
@@ -48,9 +48,16 @@ export class Player {
         
         this.x += this.dx;
         this.y += this.dy;
-        if(this.dx || this.dy > 0){
-            this.audio2.play();
+        if(this.dx > 0){
+            this.image = document.getElementById("rightBear");
+        }else if(this.dx < 0){
+            this.image = document.getElementById("leftBear");
+        }else if(this.dx === 0){
+            this.image = document.getElementById("idleBear");
         }
+        // if(this.dx || this.dy > 0){
+        //     this.audio2.play();
+        // }
 
 
         // Ensure the player does not move outside the canvas using this.canvas
