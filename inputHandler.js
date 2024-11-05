@@ -4,7 +4,7 @@ export function setupInputListeners(game) {
         ArrowDown: false,
         ArrowLeft: false,
         ArrowRight: false,
-        ' ': false // Change Spacebar to a single space character
+        ' ': false // Spacebar single space character
     };
 
     document.addEventListener('keydown', (e) => {

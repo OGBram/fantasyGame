@@ -1,3 +1,4 @@
+
 // player.js
 export class Player {
     constructor(canvas, tileHeight, tileWidth, audio2) {
@@ -21,6 +22,7 @@ export class Player {
         this.image = document.getElementById("rightBear");
         this.audio2 = document.getElementById("playerMove");
         this.isAttacking = false;
+        this.projectilePool = [];
     }
 
     draw(context){
@@ -44,6 +46,7 @@ export class Player {
         }else{
             this.maxFrame = 11;
         }
+
         this.spriteTimer++;
         if(this.spriteTimer === 2){
             this.frameX < this.maxFrame ? this.frameX++ : this.frameX = 0;
