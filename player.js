@@ -20,7 +20,7 @@ export class Player {
         this.spriteTimer = 0;
         this.image = document.getElementById("rightBear");
         this.audio2 = document.getElementById("playerMove");
-
+        this.isAttacking = false;
     }
 
     draw(context){
@@ -39,6 +39,11 @@ export class Player {
         );
     }
     update(){
+        if(this.image = document.getElementById("throwBear")){
+            this.maxFrame = 7;
+        }else{
+            this.maxFrame = 11;
+        }
         this.spriteTimer++;
         if(this.spriteTimer === 2){
             this.frameX < this.maxFrame ? this.frameX++ : this.frameX = 0;
@@ -48,7 +53,11 @@ export class Player {
         
         this.x += this.dx;
         this.y += this.dy;
-        if(this.dx > 0){
+
+        if (this.isAttacking === true){
+            this.image = document.getElementById("throwBear");
+        }
+        else if(this.dx > 0){
             this.image = document.getElementById("rightBear");
         }else if(this.dx < 0){
             this.image = document.getElementById("leftBear");
@@ -60,10 +69,6 @@ export class Player {
         }else if(this.dy < 0 && this.dx === 0){
             this.image = document.getElementById("rightBear");
         }
-        // if(this.dx || this.dy > 0){
-        //     this.audio2.play();
-        // }
-
 
         // Ensure the player does not move outside the canvas using this.canvas
         this.x = Math.max(0, Math.min(this.canvas.width - this.width, this.x));
