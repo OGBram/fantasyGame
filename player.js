@@ -9,8 +9,8 @@ export class Player {
         this.height = 320;
         this.spriteWidth = 320;
         this.spriteHeight = 512;
-        this.x = 50;
-        this.y = 50;
+        this.x = 5;
+        this.y = 5;
         this.speed = 5;
         this.dx = 0;
         this.dy = 0;
@@ -54,6 +54,11 @@ export class Player {
             this.image = document.getElementById("leftBear");
         }else if(this.dx === 0){
             this.image = document.getElementById("idleBear");
+        }      
+        if(this.dy > 0 && this.dx === 0){
+            this.image = document.getElementById("rightBear");
+        }else if(this.dy < 0 && this.dx === 0){
+            this.image = document.getElementById("rightBear");
         }
         // if(this.dx || this.dy > 0){
         //     this.audio2.play();
