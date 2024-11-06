@@ -1,5 +1,6 @@
-
 // player.js
+import { Projectile } from "./projectile.js"
+
 export class Player {
     constructor(canvas, tileHeight, tileWidth, audio2) {
         this.canvas = canvas;
@@ -23,6 +24,7 @@ export class Player {
         this.audio2 = document.getElementById("playerMove");
         this.isAttacking = false;
         this.projectilePool = [];
+        this.projectile = new Projectile(this.x, this.y, canvas);
     }
 
     draw(context){
@@ -59,6 +61,7 @@ export class Player {
 
         if (this.isAttacking === true){
             this.image = document.getElementById("throwBear");
+            // this.projectilePool.push(new Projectile(this.x, this.y, this.projectilePool));
         }
         else if(this.dx > 0){
             this.image = document.getElementById("rightBear");
@@ -72,6 +75,11 @@ export class Player {
         }else if(this.dy < 0 && this.dx === 0){
             this.image = document.getElementById("rightBear");
         }
+        
+        // this.projectilePool.forEach((projectile) => {
+        //     this.projectile.draw(context);
+        // });
+        
 
         // Ensure the player does not move outside the canvas using this.canvas
         this.x = Math.max(0, Math.min(this.canvas.width - this.width, this.x));

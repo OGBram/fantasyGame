@@ -1,13 +1,14 @@
+//projectile.js
 export class Projectile {
-    constructor(player, canvas) {
+    constructor(player, canvas, projectilePool) {
+        this.projectilePool = projectilePool;
         this.canvas = canvas;
-        this.player = player;
         this.width = 320; 
         this.height = 512;
         this.spriteWidth = 320;
         this.spriteHeight = 512;
-        this.x = player.x + player.width / 4; // Offset to start near the player
-        this.y = player.y + player.height / 4;
+        this.x = player.x;
+        this.y = player.y;
         this.speed = 7; 
         this.dx = player.dx !== 0 ? player.dx * this.speed : this.speed; // Direction based on player movement
         this.dy = player.dy !== 0 ? player.dy * this.speed : 0;
@@ -36,6 +37,10 @@ export class Projectile {
     }
 
     update() {
+        this.projectilePool.forEach((projectile) => {
+            projectile.draw(context);
+        });
+        
         this.x += this.dx;
         this.y += this.dy;
 
