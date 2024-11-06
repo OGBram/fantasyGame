@@ -16,6 +16,7 @@ export class Bomb  {
         this.spriteTimer = 0;        
     }
     draw(context) {
+        this.image = document.getElementById("bomb");
         context.drawImage(
         this.image,
         this.frameX * this.spriteWidth,
