@@ -1,5 +1,5 @@
 // player.js
-import { Projectile } from "./projectile.js"
+import { Bomb } from "./bomb.js"
 
 export class Player {
     constructor(canvas, tileHeight, tileWidth, audio2) {
@@ -23,8 +23,8 @@ export class Player {
         this.image = document.getElementById("rightBear");
         this.audio2 = document.getElementById("playerMove");
         this.isAttacking = false;
-        this.projectilePool = [];
-        this.projectile = new Projectile(this.x, this.y, canvas);
+        this.bombPool = [];
+        this.bomb = new Bomb(this);
     }
 
     draw(context){
@@ -42,48 +42,57 @@ export class Player {
             this.height/2,
         );
     }
-    update(){
-        if(this.image = document.getElementById("throwBear")){
+    update() {
+        // Update player state
+        if (this.image = document.getElementById("throwBear")) {
             this.maxFrame = 7;
-        }else{
+        } else {
             this.maxFrame = 11;
         }
-
+    
+        if (this.isAttacking === true) {
+            this.image = document.getElementById("throwBear");
+            this.bombPool.push(new Bomb(this));
+        } else if (this.dx > 0) {
+            this.image = document.getElementById("rightBear");
+        } else if (this.dx < 0) {
+            this.image = document.getElementById("leftBear");
+        } else if (this.dx === 0) {
+            this.image = document.getElementById("idleBear");
+        }
+        
+        if (this.dy > 0 && this.dx === 0) {
+            this.image = document.getElementById("rightBear");
+        } else if (this.dy < 0 && this.dx === 0) {
+            this.image = document.getElementById("rightBear");
+        }
+    
+        // Update bombs and remove those off canvas
+        this.bombPool = this.bombPool.filter((bomb) => {
+            bomb.update();
+            // Check if bomb is within canvas boundaries
+            return (
+                bomb.x + bomb.width > 0 &&
+                bomb.x < this.canvas.width &&
+                bomb.y + bomb.height > 0 &&
+                bomb.y < this.canvas.height
+            );
+        });
+    
+        // Update sprite animation
         this.spriteTimer++;
-        if(this.spriteTimer === 2){
+        if (this.spriteTimer === 3) {
             this.frameX < this.maxFrame ? this.frameX++ : this.frameX = 0;
             this.spriteTimer = 0;
-        } 
-        
-        
+        }
+    
+        // Move player
         this.x += this.dx;
         this.y += this.dy;
-
-        if (this.isAttacking === true){
-            this.image = document.getElementById("throwBear");
-            // this.projectilePool.push(new Projectile(this.x, this.y, this.projectilePool));
-        }
-        else if(this.dx > 0){
-            this.image = document.getElementById("rightBear");
-        }else if(this.dx < 0){
-            this.image = document.getElementById("leftBear");
-        }else if(this.dx === 0){
-            this.image = document.getElementById("idleBear");
-        }      
-        if(this.dy > 0 && this.dx === 0){
-            this.image = document.getElementById("rightBear");
-        }else if(this.dy < 0 && this.dx === 0){
-            this.image = document.getElementById("rightBear");
-        }
-        
-        // this.projectilePool.forEach((projectile) => {
-        //     this.projectile.draw(context);
-        // });
-        
-
-        // Ensure the player does not move outside the canvas using this.canvas
+    
+        // Ensure player stays within the canvas
         this.x = Math.max(0, Math.min(this.canvas.width - this.width, this.x));
         this.y = Math.max(0, Math.min(this.canvas.height - this.height, this.y));
+    }
     
     }
-}

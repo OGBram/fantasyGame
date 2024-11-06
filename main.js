@@ -37,7 +37,9 @@ function loop(now) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         game.player.update(); 
-        game.player.draw(ctx); 
+        game.player.draw(ctx);
+        game.update()
+        game.draw(ctx) 
 
         lastTime = now;
     }
