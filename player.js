@@ -29,6 +29,9 @@ export class Player {
 
     draw(context){
         context.save();
+        if(this.image === null){
+            this.image = document.getElementById("rightBear");
+        }
         context.globalAlpha = 1.0;
         context.drawImage(
             this.image,
