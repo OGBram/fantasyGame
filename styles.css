@@ -6,16 +6,16 @@ body {
     justify-content: center;
     align-items: center;
 
-    width: 800px;
-    height: 600px;
+    width: 100%;
+    height: auto;
     background-image: url("IMG/BACKGROUND/bg2560.png");
     background-size: 100%;
     overflow: hidden;
 }
 
 canvas {
-    width: 800px;
-    height: 600px;
+    width: 1900px;
+    height: 1080px;
 }
 
 #imageContainer {

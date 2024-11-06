@@ -5,10 +5,10 @@ export class Bomb  {
         this.spriteHeight = 64; 
         this.width = this.spriteWidth;
         this.height = this.spriteHeight;
-        this.x = player.x+15;
-        this.y = player.y-50;
-        this.dx = 10;
-        this.dy = Math.random()*2;
+        this.x = player.x+100;
+        this.y = player.y-25;
+        this.dx = 2.5 + Math.random();
+        this.dy = Math.random()*1.5;
         this.frameX = 0;
         this.frameY = 0;
         this.maxFrame = 100;
@@ -24,13 +24,13 @@ export class Bomb  {
         this.spriteHeight,
         this.x,
         this.y,
-        this.width*3,
-        this.height*3,
+        this.width*2,
+        this.height*2,
         );
     }
     update(){
         this.spriteTimer++;
-        if(this.spriteTimer === 12){
+        if(this.spriteTimer === 25){
             this.frameX < this.maxFrame ? this.frameX++ : this.frameX = 0;
             this.spriteTimer = 0;
         }     
