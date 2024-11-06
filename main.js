@@ -4,8 +4,8 @@ import { setupInputListeners } from './inputHandler.js';
 window.onload = function() {
     const canvas = document.getElementById("canvasMain");
     const ctx = canvas.getContext("2d");
-    canvas.height = 1080;
-    canvas.width = 2800;
+    canvas.height = 3000;
+    canvas.width = 3000;
     ctx.fillStyle = "white";
     ctx.font = "100px monospace";
     const tileWidth = 32;

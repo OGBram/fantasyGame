@@ -11,9 +11,9 @@ export class Player {
         this.height = 320;
         this.spriteWidth = 320;
         this.spriteHeight = 512;
-        this.x = 350;
-        this.y = 5;
-        this.speed = 5;
+        this.x = 600;
+        this.y = 25;
+        this.speed = 3;
         this.dx = 0;
         this.dy = 0;
         this.frameX = 0;
@@ -41,7 +41,7 @@ export class Player {
             this.spriteHeight,
             this.x,
             this.y,
-            this.width/2,
+            this.width/3,
             this.height/2,
         );
     }

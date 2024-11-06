@@ -5,7 +5,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
     width: 100%;
     height: auto;
     background-image: url("IMG/BACKGROUND/bg2560.png");
@@ -14,8 +13,8 @@ body {
 }
 
 canvas {
-    width: 1900px;
-    height: 1080px;
+    width: 3000;
+    height: 3000;
 }
 
 #imageContainer {
