@@ -1,46 +1,42 @@
-// main.js
+//main.js
 import { Game } from './game.js';
 import { setupInputListeners } from './inputHandler.js';
+window.onload = function() {
+    const canvas = document.getElementById("canvasMain");
+    const ctx = canvas.getContext("2d");
+    canvas.height = 1080;
+    canvas.width = 2800;
+    ctx.fillStyle = "white";
+    ctx.font = "100px monospace";
+    const tileWidth = 32;
+    const tileHeight = 32;
+    const audio1 = document.getElementById("mainSound");
+    audio1.play();
+    audio1.repeat = true;
 
-const canvas = document.getElementById("canvasMain");
-const ctx = canvas.getContext("2d");
-canvas.height = 1080;
-canvas.width = 2800;
-ctx.fillStyle = "white";
-ctx.font = "100px monospace";
-const tileWidth = 32;
-const tileHeight = 32;
-const audio1 = document.getElementById("mainSound");
-audio1.play();
-audio1.repeat = true;
+    const game = new Game(canvas, ctx, tileWidth, tileHeight);  
+    setupInputListeners(game);
 
-// game.js
-const game = new Game(canvas, ctx, tileWidth, tileHeight);  
+    let lastTime;
+    const requiredElapsed = 1000 / 50;
 
-// uses: inputHandler.js
-setupInputListeners(game);
-
-// Game Loop uses: player.js, game.js
-
-let lastTime;
-const requiredElapsed = 1000 / 50;
-
-requestAnimationFrame(loop);
-
-function loop(now) {
     requestAnimationFrame(loop);
 
-    if (!lastTime) { lastTime = now; }
-    const elapsed = now - lastTime;
+    function loop(now) {
+        requestAnimationFrame(loop);
+        
+        if (!lastTime) { lastTime = now; }
+        const elapsed = now - lastTime;
 
-    if (elapsed > requiredElapsed) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        if (elapsed > requiredElapsed) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        game.player.update(); 
-        game.player.draw(ctx);
-        game.update()
-        game.draw(ctx) 
+            game.player.update(); 
+            game.player.draw(ctx);
+            game.update()
+            game.draw(ctx) 
 
-        lastTime = now;
+            lastTime = now;
+        }
     }
 }
