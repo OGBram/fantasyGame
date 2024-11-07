@@ -2,16 +2,14 @@
 import { Bomb } from "./bomb.js"
 
 export class Player {
-    constructor(canvas, tileHeight, tileWidth, audio2) {
+    constructor(canvas, audio2, idle, walkLeft, walkRight, attack) {
         this.canvas = canvas;
-        this.tileWidth = tileWidth;
-        this.tileHeight = tileHeight;
         this.audio2 = audio2;
         this.width = 512;
         this.height = 320;
         this.spriteWidth = 320;
         this.spriteHeight = 512;
-        this.x = 600;
+        this.x = 850;
         this.y = 25;
         this.speed = 3;
         this.dx = 0;
@@ -20,7 +18,7 @@ export class Player {
         this.frameY = 0;
         this.maxFrame = 11;
         this.spriteTimer = 0;
-        this.image = document.getElementById("rightBear");
+        this.image = idle;
         this.audio2 = document.getElementById("playerMove");
         this.isAttacking = false;
         this.bombPool = [];
