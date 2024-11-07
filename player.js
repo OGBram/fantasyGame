@@ -47,7 +47,7 @@ export class Player {
     }
     update() {
         // Update player state
-        if (this.image = document.getElementById("throwBear")) {
+        if (this.image === document.getElementById("throwBear")) {
             this.maxFrame = 7;
         } else {
             this.maxFrame = 11;
