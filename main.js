@@ -38,8 +38,7 @@ window.onload = function() {
             game.player.update(); 
             game.player.draw(ctx);
             game.update()
-            game.draw(ctx) 
-
+            game.draw(ctx)
             lastTime = now;
         }
     }
