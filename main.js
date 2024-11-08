@@ -18,7 +18,7 @@ window.onload = function() {
     const walkRight = document.getElementById("rightBear");
     const attack = document.getElementById("throwBear");
 
-    const game = new Game(canvas, ctx, idle, walkLeft, walkRight, attack);  
+    const game = new Game(canvas, ctx);  
     setupInputListeners(game);
 
     let lastTime;

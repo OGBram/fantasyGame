@@ -2,11 +2,10 @@
 import { Player } from './player.js';
 
 export class Game {
-    constructor(canvas, audio2, ctx, idle, walkLeft, walkRight, attack) {
+    constructor(canvas, ctx) {
         this.canvas = canvas;
         this.ctx = ctx;
-        this.audio2 = audio2;
-        this.player = new Player(ctx,canvas, idle, walkLeft, walkRight, attack);
+        this.player = new Player(canvas, ctx);
     
     }
 

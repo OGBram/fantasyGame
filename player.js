@@ -2,13 +2,13 @@
 import { Bomb } from "./bomb.js"
 
 export class Player {
-    constructor(canvas, audio2, idle, walkLeft, walkRight, attack) {
+    constructor(canvas, ctx) {
+        this.ctx = ctx;
         this.canvas = canvas;
-        this.audio2 = audio2;
         this.width = 512;
         this.height = 320;
         this.spriteWidth = 320;
-        this.spriteHeight = 512;
+        this.spriteHeight = 475;
         this.x = 850;
         this.y = 25;
         this.speed = 3;
@@ -18,7 +18,7 @@ export class Player {
         this.frameY = 0;
         this.maxFrame = 11;
         this.spriteTimer = 0;
-        this.image = idle;
+        this.image = document.getElementById("bearPng");
         this.audio2 = document.getElementById("playerMove");
         this.isAttacking = false;
         this.bombPool = [];
@@ -26,11 +26,6 @@ export class Player {
     }
 
     draw(context){
-        context.save();
-        if(this.image === null){
-            this.image = document.getElementById("rightBear");
-        }
-        context.globalAlpha = 1.0;
         context.drawImage(
             this.image,
             this.frameX * this.spriteWidth,
@@ -45,27 +40,27 @@ export class Player {
     }
     update() {
         // Update player state
-        if (this.image === document.getElementById("throwBear")) {
+        if (this.frameY > 2) {
             this.maxFrame = 7;
         } else {
             this.maxFrame = 11;
         }
     
         if (this.isAttacking === true) {
-            this.image = document.getElementById("throwBear");
+            this.frameY = 3;
             this.bombPool.push(new Bomb(this));
         } else if (this.dx > 0) {
-            this.image = document.getElementById("rightBear");
+            this.frameY = 1;
         } else if (this.dx < 0) {
-            this.image = document.getElementById("leftBear");
+            this.frameY = 2;
         } else if (this.dx === 0) {
-            this.image = document.getElementById("idleBear");
+            this.frameY = 0;
         }
         
         if (this.dy > 0 && this.dx === 0) {
-            this.image = document.getElementById("rightBear");
+            this.frameY = 1;
         } else if (this.dy < 0 && this.dx === 0) {
-            this.image = document.getElementById("rightBear");
+            this.frameY = 1;
         }
     
         // Update bombs and remove those off canvas
