@@ -7,9 +7,7 @@ window.onload = function() {
     canvas.height = 3000;
     canvas.width = 3000;
     ctx.fillStyle = "white";
-    ctx.font = "100px monospace";
-    const tileWidth = 32;
-    const tileHeight = 32;
+    ctx.font = "75px monospace";
     const audio1 = document.getElementById("mainSound");
     audio1.play();
     audio1.repeat = true;
@@ -39,6 +37,8 @@ window.onload = function() {
             game.player.draw(ctx);
             game.update()
             game.draw(ctx)
+             
+
             lastTime = now;
         }
     }
