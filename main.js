@@ -11,10 +11,6 @@ window.onload = function() {
     const audio1 = document.getElementById("mainSound");
     audio1.play();
     audio1.repeat = true;
-    const idle = document.getElementById("idleBear");
-    const walkLeft =  document.getElementById("leftBear");
-    const walkRight = document.getElementById("rightBear");
-    const attack = document.getElementById("throwBear");
 
     const game = new Game(canvas, ctx);  
     setupInputListeners(game);
@@ -38,7 +34,6 @@ window.onload = function() {
             game.update()
             game.draw(ctx)
              
-
             lastTime = now;
         }
     }

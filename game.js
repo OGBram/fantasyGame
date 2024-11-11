@@ -9,11 +9,6 @@ export class Game {
     
     }
 
-    drawColor(r, g, b) {
-        this.ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
-    }
-    
-
     draw(context){
         this.player.bombPool.forEach((bomb) => {
             bomb.draw(context); // Use bomb.draw(context) here
